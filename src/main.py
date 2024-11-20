@@ -54,7 +54,7 @@ class IdeaBoardApp(AppLayout):
                 "/",
                 [self.appbar, self],
                 padding=padding.all(0),
-                bgcolor=colors.GREY_50,
+                bgcolor=colors.WHITE,
             )
         )
         self.page.update()
@@ -96,7 +96,7 @@ class IdeaBoardApp(AppLayout):
             label="New Board Name", on_submit=close_dlg, on_change=textfield_change
         )
         create_button = ElevatedButton(
-            text="Create", bgcolor=colors.BLUE_200, on_click=close_dlg, disabled=True
+            text="Create", bgcolor=colors.INDIGO, on_click=close_dlg, disabled=True
         )
         dialog = AlertDialog(
             title=Text("Name your new board"),
