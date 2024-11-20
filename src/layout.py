@@ -162,13 +162,6 @@ class AppLayout(Row):
                                             data=b,
                                         ),
                                         PopupMenuItem(),
-                                        PopupMenuItem(
-                                            content=Text(
-                                                value="Archive",
-                                                style="labelMedium",
-                                                text_align="center",
-                                            ),
-                                        ),
                                     ]
                                 ),
                                 padding=padding.only(right=-10),
