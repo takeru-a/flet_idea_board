@@ -13,7 +13,6 @@ from flet import (
     Row,
     Text,
     TextButton,
-    TextField,
     border,
     border_radius,
     colors,
@@ -21,6 +20,7 @@ from flet import (
     padding,
 )
 from sidebar import Sidebar
+from docs import Docs
 
 class AppLayout(Row):
     def __init__(self, app, page: Page, store: DataStore, *args, **kwargs):
@@ -40,8 +40,8 @@ class AppLayout(Row):
         self.sidebar = Sidebar(self, self.store)
         
         # メインエリア
-        # ノート作成ページ
-        self.create_note = Text("Your Notes")
+        # ドキュメント表示ページ
+        self.display_docs = Docs(self.page)
         # ボード作成ページ
         self.all_boards_view = Column(
             [
@@ -68,22 +68,6 @@ class AppLayout(Row):
                             ),
                             padding=padding.only(right=50, top=15),
                         ),
-                    ]
-                ),
-                Row(
-                    [
-                        TextField(
-                            hint_text="Search all boards",
-                            autofocus=False,
-                            content_padding=padding.only(left=10),
-                            width=200,
-                            height=40,
-                            text_size=12,
-                            border_color=colors.BLACK26,
-                            color=colors.BLACK87,
-                            focused_border_color=colors.BLUE_ACCENT,
-                            suffix_icon=icons.SEARCH,
-                        )
                     ]
                 ),
                 Row([Text("No Boards to Display", color=colors.BLACK87)]),
@@ -121,15 +105,15 @@ class AppLayout(Row):
         self.sidebar.bottom_nav_rail.selected_index = None
         self.sidebar.update()
         self.page.update()
-
-    def set_create_note(self):
+    
+    def set_display_docs(self):
         # エリア切替
-        self.active_view = self.create_note
+        self.active_view = self.display_docs
         self.sidebar.top_nav_rail.selected_index = 1
         self.sidebar.bottom_nav_rail.selected_index = None
         self.sidebar.update()
         self.page.update()
-
+    
     def page_resize(self, e=None):
         if type(self.active_view) is Board:
             self.active_view.resize(
