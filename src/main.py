@@ -30,11 +30,12 @@ class IdeaBoardApp(AppLayout):
         self.boards = self.store.get_boards()
 
         self.appbar = AppBar(
-            leading=Icon(icons.GRID_GOLDENRATIO_ROUNDED),
+            leading=Icon(icons.DEVELOPER_BOARD),
             leading_width=100,
             title=Text(f"Idea Board", font_family="Pacifico", size=32, text_align="start"),
             center_title=False,
             toolbar_height=60,
+            color=colors.WHITE,
             bgcolor=colors.INDIGO_500,
         )
         self.page.appbar = self.appbar
@@ -64,7 +65,7 @@ class IdeaBoardApp(AppLayout):
     def route_change(self, e):
         troute = TemplateRoute(self.page.route)
         if troute.match("/"):
-            self.page.go("/create/board")
+            self.page.go("/docs")
         elif troute.match("/board/:id"):
             if int(troute.id) > len(self.store.get_boards()):
                 self.page.go("/")
@@ -72,10 +73,11 @@ class IdeaBoardApp(AppLayout):
             self.set_board_view(int(troute.id))
         elif troute.match("/create/board"):
             self.set_all_boards_view()
-        elif troute.match("/create/note"):
-            self.set_create_note()
+        elif troute.match("/docs"):
+            self.set_display_docs()
         self.page.update()
 
+    # ボードを追加する
     def add_board(self, e):
         def close_dlg(e):
             if (hasattr(e.control, "text") and not e.control.text == "Cancel") or (
@@ -96,7 +98,7 @@ class IdeaBoardApp(AppLayout):
             label="New Board Name", on_submit=close_dlg, on_change=textfield_change
         )
         create_button = ElevatedButton(
-            text="Create", bgcolor=colors.INDIGO, on_click=close_dlg, disabled=True
+            text="Create", bgcolor=colors.INDIGO, on_click=close_dlg, color=colors.WHITE, disabled=True
         )
         dialog = AlertDialog(
             title=Text("Name your new board"),
@@ -135,7 +137,7 @@ def main(page: Page):
     page.title = "Flet Idea Board"
     page.padding = 0
     page.theme = theme.Theme(font_family="Verdana")
-    page.theme_mode = "dark"
+    page.theme_mode = "light"
     page.theme.page_transitions.windows = "cupertino"
     page.fonts = {"Pacifico": "Pacifico-Regular.ttf"}
     app = IdeaBoardApp(page, InMemoryStore())
@@ -143,4 +145,4 @@ def main(page: Page):
     page.update()
     app.initialize()
 
-flet.app(target=main, assets_dir="../assets")
+flet.app(target=main)

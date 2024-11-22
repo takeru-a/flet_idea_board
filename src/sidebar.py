@@ -30,10 +30,10 @@ class Sidebar(Container):
                 selected_icon=icons.ADD_BOX
             ),
             NavigationRailDestination(
-                label_content=Text("New Note"),
-                label="New Note",
-                icon=icons.NOTE_ALT,
-                selected_icon=icons.NOTE_ALT
+                label_content=Text("Document"),
+                label="Document",
+                icon=icons.MENU_BOOK_ROUNDED,
+                selected_icon=icons.MENU_BOOK_ROUNDED
             ),
         ]
 
@@ -44,7 +44,7 @@ class Sidebar(Container):
             destinations=self.top_nav_items,
             bgcolor=colors.INDIGO_400,
             extended=True,
-            height=110
+            height=110,
         )
         
         self.bottom_nav_rail = NavigationRail(
@@ -131,7 +131,7 @@ class Sidebar(Container):
         if index == 0:
             self.page.route = "/create/board"
         elif index == 1:
-            self.page.route = "/create/note"
+            self.page.route = "/docs"
         self.page.update()
 
     def bottom_nav_change(self, e):
