@@ -53,17 +53,6 @@ class ControlBar(UserControl):
                         on_hover=self.on_hover,
                         on_click=self.on_click
                 ),
-                #     Container(
-                #         key="image",
-                #         content=Icon(icons.IMAGE_OUTLINED, color=colors.BLACK),
-                #         bgcolor=colors.GREY_300,
-                #         border_radius=10,
-                #         width=40,
-                #         height=40,
-                #         ink=True,
-                #         on_hover=self.on_hover,
-                #         on_click=self.on_click
-                # ),
                     Container(
                         key="squares",
                         content=Icon(icons.CROP_SQUARE_SHARP, color=colors.BLACK),
