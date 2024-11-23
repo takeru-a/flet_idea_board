@@ -1,6 +1,13 @@
 # flet_idea_board
-このアプリはFletを使った簡単なIdea Boardです。 簡単に使い方を説明します。 
+以下のサイトからWebアプリとして稼働してるアプリケーションを試すことができます。  
+[Webアプリ](https://flet-idea-board.onrender.com)
+
+以下のページからWindowsデスクトップアプリとして稼働してるアプリケーションをダウンロードすることができます。  
+[デスクトップアプリ](https://github.com/takeru-a/flet_idea_board/blob/main/dist/idea-board.exe)
+
+このアプリはFletを使った簡単なIdea Boardです。  
 ## 使い方
+簡単に使い方を説明します。 
 ### 1. ボードを追加する
 左のサイドバーの「New Board」をクリックしてボード追加ページに移動します。    
 add new boardをクリックすると、ボード名を入力するダイアログが表示されます。
