@@ -39,7 +39,6 @@ class Board(Container):
         # ボードの描画エリア
         self.cp = canvas(self.page, self.state)
 
-        # 7個コンテナ
         self.controlbar = ControlBar(self.state)
         self.bg = GestureDetector(
                     on_tap_down=self.add_obj,
@@ -125,30 +124,7 @@ class Board(Container):
             id = len(self.board.controls) - 1
             arrow = Arrow(self.page, self.state, self.board, id, top=e.local_y, left=e.local_x)
             self.board.controls.insert(id, arrow)
-        
-        # 画像を追加
-        elif self.state.mode == "image":
-            id = len(self.board.controls) - 1
-            self.board.controls.insert(id, GestureDetector(
-                mouse_cursor=MouseCursor.MOVE,
-                drag_interval=10,
-                on_pan_update=self.move_obj,
-                on_scale_update=self.resize_obj,
-                on_tap=self.delete_obj,
-                content=Container(
-                    content=TextField("", color=colors.BLACK, multiline=True, border="None"),
-                    bgcolor=colors.GREY_50,
-                    border_radius=2,
-                    border=border.all(1, colors.BLACK),
-                    shadow=BoxShadow(color=colors.GREY_400, spread_radius=0.2, blur_radius=0.2, offset=(1, 1)),
-                    alignment=alignment.center,
-                ),
-                width=100,
-                height=100,
-                top=e.local_y,
-                left=e.local_x,
-            ))
-        
+                
         self.update()
 
     # オブジェクト追加後処理
